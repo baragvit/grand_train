@@ -12,7 +12,7 @@ def get_grand_train_page():
         options.add_argument("--headless")  # Run browser in headless mode (no GUI)
         driver = webdriver.Chrome(options=options)
         driver.set_page_load_timeout(15)
-        driver.get("https://grandtrain.ru/search/2000000-2078001/25.10.2025/028%D0%9C/")
+        driver.get("https://grandtrain.ru/search/2078001-2000000/08.11.2025/028%D0%A1/")
         WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.CLASS_NAME, "car-class__fare-item"))
         )
