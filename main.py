@@ -20,6 +20,9 @@ def has_tickets(html):
     soup = BeautifulSoup(html, "lxml")
     kupe_carriages = soup.findAll(attrs={"data-filter": "Купе"})
     for carriage in kupe_carriages:
+        invalid = carriage.find("div", class_="car-class__note-main")
+        if invalid and 'Купе для маломобильных пассажиров' in invalid.text:
+            continue
         places = carriage.findAll("div", class_="car-class__fare-item")
         if (len([s.find('span') for s in places if 'нижн' in s.find('span').text])):
             return True
